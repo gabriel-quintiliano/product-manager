@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 import { ProductComponent } from './components/product/product.component';
 import { ProductTableComponent } from './components/product-table/product-table.component';
 import { ProductListHeaderComponent } from './components/product-list-header/product-list-header.component';
@@ -19,7 +21,8 @@ import { ProductEditFormComponent } from './components/product-edit-form/product
 		ProductEditFormComponent
 	],
 	imports: [
-		CommonModule
+		CommonModule,
+		BrowserAnimationsModule
 	],
 	exports: [
 		ProductComponent,
