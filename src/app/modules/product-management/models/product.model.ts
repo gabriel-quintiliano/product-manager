@@ -1,20 +1,30 @@
-// export interface IProduct {
-// 	sku: ProductProperty<string>;
-// 	name: ProductProperty<string>;
-// 	costPrice: ProductProperty<number>;
-// 	relatedExpenses: ProductProperty<number>;
-// 	markup: ProductProperty<number>;
-// 	margin: ProductProperty<number>;
-// 	sellingPrice: ProductProperty<number>;
-// } // Maybe this interface is not really necessary in the end
+type ProductKeyIdentifier = "sku" | "name" | "costPrice" | "relatedExpenses" | "markup" | "margin" | "sellingPrice"
 
-export type ProductProperty<T> = {
-	value: T;
-	label: string;
-	description: string;
+type ProductDefaultsType = {
+	[key in ProductKeyIdentifier]: {
+		label: string,
+		description: string
+	};
 }
 
-export class Product {
+const ProductDefaults: ProductDefaultsType = {
+	sku: { label: "sku", description: "Código exclusivo de um produto utilizado para identificar o mesmo com base em suas características" },
+	name: { label: "nome", description: "Nome do produto que aparecerá no site da loja" },
+	costPrice: { label: "preço de custo", description: "Preço pago para adquirir o produto do fornecedor/fabricá-lo" },
+	relatedExpenses: { label: "despesas relacionadas", description: "Demais despesas relacionadas ao produto como: transporte, impostos, embalagem..." },
+	markup: { label: "markup", description: "Valor adicionado ao preço de custo e despesas relacionadas - lucro" },
+	margin: { label: "margin", description: "Margem de lucro sobre o preço de venda em porcentagem" },
+	sellingPrice: { label: "preço de venda", description: "Preço final pelo qual o produto será comercializado" }
+} as const;
+
+
+type ProductProperty<T> = {
+	value: T;
+	readonly label: string;
+	readonly description: string;
+}
+
+class Product {
 	sku: ProductProperty<string>;
 	name: ProductProperty<string>;
 	costPrice: ProductProperty<number>;
@@ -24,12 +34,14 @@ export class Product {
 	sellingPrice: ProductProperty<number>;
 
 	constructor(sku: string, name: string, costPrice: number, relatedExpenses: number, markup: number, margin: number, sellingPrice: number) {
-		this.sku = { value: sku, label: "sku", description: "Código exclusivo de um produto utilizado para identificar o mesmo com base em suas características" };
-		this.name = { value: name, label: "nome", description: "Nome do produto que aparecerá no site da loja" };
-		this.costPrice = { value: costPrice, label: "preço de custo", description: "Preço pago para adquirir o produto do fornecedor/fabricá-lo" };
-		this.relatedExpenses = { value: relatedExpenses, label: "despesas relacionadas", description: "Demais despesas relacionadas ao produto como: transporte, impostos, embalagem..." };
-		this.markup = { value: markup, label: "markup", description: "Valor adicionado ao preço de custo e despesas relacionadas - lucro" };
-		this.margin = { value: margin, label: "margem", description: "Margem de lucro sobre o preço de venda em porcentagem" };
-		this.sellingPrice = { value: sellingPrice, label: "preço de venda", description: "Preço final pelo qual o produto será comercializado" };
+		this.sku = { value: sku, ...ProductDefaults.sku };
+		this.name = { value: name, ...ProductDefaults.name };
+		this.costPrice = { value: costPrice, ...ProductDefaults.costPrice };
+		this.relatedExpenses = { value: relatedExpenses, ...ProductDefaults.relatedExpenses };
+		this.markup = { value: markup, ...ProductDefaults.markup };
+		this.margin = { value: margin, ...ProductDefaults.margin };
+		this.sellingPrice = { value: sellingPrice, ...ProductDefaults.sellingPrice };
 	}
 }
+
+export { Product, ProductDefaults }
