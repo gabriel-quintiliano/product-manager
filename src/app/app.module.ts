@@ -1,10 +1,9 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-// import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ProductManagementModule } from './modules/product-management/product-management.module';
+import { ProductManagerModule } from './modules/product-manager/product-manager.module';
 
 @NgModule({
 	declarations: [
@@ -13,8 +12,7 @@ import { ProductManagementModule } from './modules/product-management/product-ma
 	imports: [
 		BrowserModule,
 		AppRoutingModule,
-		ProductManagementModule,
-		// BrowserAnimationsModule
+		ProductManagerModule,
 	],
 	providers: [],
 	bootstrap: [AppComponent]

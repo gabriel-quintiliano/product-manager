@@ -34,4 +34,4 @@ import { ProductManagerComponent } from './components/product-manager/product-ma
 		ProductManagerComponent
 	]
 })
-export class ProductManagementModule { }
+export class ProductManagerModule { }
