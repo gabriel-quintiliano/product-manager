@@ -7,6 +7,7 @@ import { ProductListHeaderComponent } from './components/product-list-header/pro
 import { ProductTableActionsBarComponent } from './components/product-table-actions-bar/product-table-actions-bar.component';
 import { ProductEditActionsBarComponent } from './components/product-edit-actions-bar/product-edit-actions-bar.component';
 import { ProductEditFormComponent } from './components/product-edit-form/product-edit-form.component';
+import { ProductManagerComponent } from './components/product-manager/product-manager.component';
 
 
 
@@ -17,7 +18,8 @@ import { ProductEditFormComponent } from './components/product-edit-form/product
 		ProductListHeaderComponent,
 		ProductTableActionsBarComponent,
 		ProductEditActionsBarComponent,
-		ProductEditFormComponent
+		ProductEditFormComponent,
+		ProductManagerComponent
 	],
 	imports: [
 		CommonModule
@@ -28,7 +30,8 @@ import { ProductEditFormComponent } from './components/product-edit-form/product
 		ProductListHeaderComponent,
 		ProductTableActionsBarComponent,
 		ProductEditActionsBarComponent,
-		ProductEditFormComponent
+		ProductEditFormComponent,
+		ProductManagerComponent
 	]
 })
 export class ProductManagementModule { }
