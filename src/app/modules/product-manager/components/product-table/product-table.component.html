@@ -1,1 +1,127 @@
-<p>product-list works!</p>
+<mat-table [dataSource]="productsT" class="mat-elevation-z8">
+
+	<!-- select column template -->
+	<ng-container matColumnDef="select">
+		<mat-header-cell *matHeaderCellDef>
+			<mat-checkbox (change)="$event ? toggleAllRows() : null" [checked]="selection.hasValue() && isAllSelected()" [indeterminate]="selection.hasValue() && !isAllSelected()" [aria-label]="checkboxLabel()">
+			</mat-checkbox>
+		</mat-header-cell>
+		<mat-cell *matCellDef="let row">
+			<mat-checkbox (click)="$event.stopPropagation()" (change)="$event ? selection.toggle(row) : null" [checked]="selection.isSelected(row)" [aria-label]="checkboxLabel(row)">
+			</mat-checkbox>
+		</mat-cell>
+	</ng-container>
+
+	<!-- sku column template -->
+	<ng-container matColumnDef="sku">
+		<mat-header-cell *matHeaderCellDef> sku </mat-header-cell>
+		<mat-cell *matCellDef="let product"> {{ product.sku.value }} </mat-cell>
+	</ng-container>
+
+	<!-- name column template -->
+	<ng-container matColumnDef="name">
+		<mat-header-cell *matHeaderCellDef> nome </mat-header-cell>
+		<mat-cell *matCellDef="let product"> {{ product.name.value }} </mat-cell>
+	</ng-container>
+
+	<!-- cost price column template -->
+	<ng-container matColumnDef="costPrice">
+		<mat-header-cell *matHeaderCellDef> preço de custo </mat-header-cell>
+		<mat-cell *matCellDef="let product"> {{ product.costPrice.value }} </mat-cell>
+	</ng-container>
+
+	<!-- related expenses column template -->
+	<ng-container matColumnDef="relatedExpenses">
+		<mat-header-cell *matHeaderCellDef> despesas realcionadas </mat-header-cell>
+		<mat-cell *matCellDef="let product"> {{ product.relatedExpenses.value }} </mat-cell>
+	</ng-container>
+
+	<!-- markup column template -->
+	<ng-container matColumnDef="markup">
+		<mat-header-cell *matHeaderCellDef> markup </mat-header-cell>
+		<mat-cell *matCellDef="let product"> {{ product.markup.value }} </mat-cell>
+	</ng-container>
+
+	<!-- margin column template -->
+	<ng-container matColumnDef="margin">
+		<mat-header-cell *matHeaderCellDef> margem </mat-header-cell>
+		<mat-cell *matCellDef="let product"> {{ product.margin.value }} </mat-cell>
+	</ng-container>
+
+	<!-- sellingPrice column template -->
+	<ng-container matColumnDef="sellingPrice">
+		<mat-header-cell *matHeaderCellDef> preço de venda </mat-header-cell>
+		<mat-cell *matCellDef="let product"> {{ product.sellingPrice.value }} </mat-cell>
+	</ng-container>
+
+	<mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+	<mat-row *matRowDef="let _; columns: displayedColumns"></mat-row>
+
+</mat-table>
+
+
+
+<!-- refactor with ngFor -->
+<mat-table [dataSource]="productsT" class="mat-elevation-z8">
+
+	<!-- select column template -->
+	<ng-container matColumnDef="select">
+		<mat-header-cell *matHeaderCellDef>
+			<mat-checkbox (change)="$event ? toggleAllRows() : null" [checked]="selection.hasValue() && isAllSelected()" [indeterminate]="selection.hasValue() && !isAllSelected()" [aria-label]="checkboxLabel()">
+			</mat-checkbox>
+		</mat-header-cell>
+		<mat-cell *matCellDef="let row">
+			<mat-checkbox (click)="$event.stopPropagation()" (change)="$event ? selection.toggle(row) : null" [checked]="selection.isSelected(row)" [aria-label]="checkboxLabel(row)">
+			</mat-checkbox>
+		</mat-cell>
+	</ng-container>
+
+	<ng-template ngFor let-product [ngForOf]="products">
+		<ng-container matColumnDef="prod">
+			<mat-header-cell *matHeaderCellDef> sku </mat-header-cell>
+			<mat-cell *matCellDef="let product"> {{ product.sku.value }} </mat-cell>
+		</ng-container>
+	</ng-template>
+
+	<!-- sku column template -->
+
+	<!-- name column template -->
+	<ng-container matColumnDef="name">
+		<mat-header-cell *matHeaderCellDef> nome </mat-header-cell>
+		<mat-cell *matCellDef="let product"> {{ product.name.value }} </mat-cell>
+	</ng-container>
+
+	<!-- cost price column template -->
+	<ng-container matColumnDef="costPrice">
+		<mat-header-cell *matHeaderCellDef> preço de custo </mat-header-cell>
+		<mat-cell *matCellDef="let product"> {{ product.costPrice.value }} </mat-cell>
+	</ng-container>
+
+	<!-- related expenses column template -->
+	<ng-container matColumnDef="relatedExpenses">
+		<mat-header-cell *matHeaderCellDef> despesas realcionadas </mat-header-cell>
+		<mat-cell *matCellDef="let product"> {{ product.relatedExpenses.value }} </mat-cell>
+	</ng-container>
+
+	<!-- markup column template -->
+	<ng-container matColumnDef="markup">
+		<mat-header-cell *matHeaderCellDef> markup </mat-header-cell>
+		<mat-cell *matCellDef="let product"> {{ product.markup.value }} </mat-cell>
+	</ng-container>
+
+	<!-- margin column template -->
+	<ng-container matColumnDef="margin">
+		<mat-header-cell *matHeaderCellDef> margem </mat-header-cell>
+		<mat-cell *matCellDef="let product"> {{ product.margin.value }} </mat-cell>
+	</ng-container>
+
+	<!-- sellingPrice column template -->
+	<ng-container matColumnDef="sellingPrice">
+		<mat-header-cell *matHeaderCellDef> preço de venda </mat-header-cell>
+		<mat-cell *matCellDef="let product"> {{ product.sellingPrice.value }} </mat-cell>
+	</ng-container>
+
+	<mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+	<mat-row *matRowDef="let _; columns: displayedColumns" (click)="mostrar(productsT)"></mat-row>
+
+</mat-table>

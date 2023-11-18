@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { MatTableModule } from '@angular/material/table';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 
 import { ProductComponent } from './components/product/product.component';
 import { ProductTableComponent } from './components/product-table/product-table.component';
@@ -22,7 +24,9 @@ import { ProductManagerComponent } from './components/product-manager/product-ma
 		ProductManagerComponent
 	],
 	imports: [
-		CommonModule
+		CommonModule,
+		MatTableModule,
+		MatCheckboxModule,
 	],
 	exports: [
 		ProductComponent,
