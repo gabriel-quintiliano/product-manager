@@ -5,7 +5,8 @@ import { ObjectEntriesPipe } from './pipes/object-entries.pipe';
 import { ObjectKeysPipe } from './pipes/object-keys.pipe';
 import { ObjectValuesPipe } from './pipes/object-values.pipe';
 import { PlaceholderComponent } from './placeholder/placeholder.component';
-import { ZipArraysPipe } from './pipes/zip-arrays.pipe'
+import { ZipArraysPipe } from './pipes/zip-arrays.pipe';
+import { ZipObjectsPipe } from './pipes/zip-objects.pipe'
 
 
 @NgModule({
@@ -14,7 +15,8 @@ import { ZipArraysPipe } from './pipes/zip-arrays.pipe'
 		ObjectKeysPipe,
 		ObjectValuesPipe,
 		PlaceholderComponent,
-  ZipArraysPipe,
+		ZipArraysPipe,
+		ZipObjectsPipe,
 	],
 	imports: [
 		CommonModule
@@ -24,7 +26,8 @@ import { ZipArraysPipe } from './pipes/zip-arrays.pipe'
 		ObjectKeysPipe,
 		ObjectValuesPipe,
 		PlaceholderComponent,
-  ZipArraysPipe,
+		ZipArraysPipe,
+		ZipObjectsPipe,
 	]
 })
 export class CommonCustomUtilitiesModule { }
