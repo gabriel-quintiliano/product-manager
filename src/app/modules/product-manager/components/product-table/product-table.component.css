@@ -1,0 +1,11 @@
+mat-header-cell:first-of-type,
+mat-cell:first-of-type {
+	padding: 0;
+	max-width: 60px;
+}
+
+mat-cell,
+mat-header-cell {
+	text-align: center;
+	justify-content: center;
+}
