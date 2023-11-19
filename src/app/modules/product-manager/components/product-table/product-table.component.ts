@@ -13,25 +13,13 @@ export class ProductTableComponent {
 	productDefaults = ProductDefaults; // declared here so that I can use it in the components template
 	displayedColumns = ['select', ...Object.keys(ProductDefaults)];
 
-	products: Product[] = [
-		new Product("SKU-TV-29-3787", "TV 59\" LCD 4K - Smart Connection", 4300, 400, 1000, 1.89, 5700),
-		new Product("SKU-TV-29-3787", "TV 59\" LCD 4K - Smart Connection", 4300, 400, 1000, 1.89, 5700),
-		new Product("SKU-TV-29-3787", "TV 59\" LCD 4K - Smart Connection", 4300, 400, 1000, 1.89, 5700),
-		new Product("SKU-TV-29-3787", "TV 59\" LCD 4K - Smart Connection", 4300, 400, 1000, 1.89, 5700)
-	]
-
-	productsT = new MatTableDataSource<Product>(this.products);
-
+	products = new MatTableDataSource<Product>(PRODUCTS_SAMPLE);
 	selection = new SelectionModel<Product>(true, []);
-
-	mostrar(row: any) {
-		console.log(row)
-	}
 
 	/** Whether the number of selected elements matches the total number of rows. */
 	isAllSelected() {
 		const numSelected = this.selection.selected.length;
-		const numRows = this.productsT.data.length;
+		const numRows = this.products.data.length;
 		return numSelected === numRows;
 	}
 
@@ -42,7 +30,7 @@ export class ProductTableComponent {
 			return;
 		}
 
-		this.selection.select(...this.productsT.data);
+		this.selection.select(...this.products.data);
 	}
 
 	/** The label for the checkbox on the passed row */
@@ -53,3 +41,10 @@ export class ProductTableComponent {
 		return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ?`;
 	}
 }
+
+const PRODUCTS_SAMPLE: Product[] = [ // for testing initially
+	new Product("SKU-TV-29-3787", "TV 59\" LCD 4K - Smart Connection", 4300, 400, 1000, 1.89, 5700),
+	new Product("SKU-TV-29-3787", "TV 59\" LCD 4K - Smart Connection", 4300, 400, 1000, 1.89, 5700),
+	new Product("SKU-TV-29-3787", "TV 59\" LCD 4K - Smart Connection", 4300, 400, 1000, 1.89, 5700),
+	new Product("SKU-TV-29-3787", "TV 59\" LCD 4K - Smart Connection", 4300, 400, 1000, 1.89, 5700)
+]
