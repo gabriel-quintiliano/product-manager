@@ -1,7 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 import { SelectionModel } from '@angular/cdk/collections';
 import { MatTable, MatTableDataSource } from '@angular/material/table';
-import { Product, ProductDefaults } from '../../models/product.model';
+import { Product, ProductMetadata } from '../../models/product.model';
 
 @Component({
 	selector: 'pmg-product-table',
@@ -12,8 +12,8 @@ import { Product, ProductDefaults } from '../../models/product.model';
 export class ProductTableComponent {
 
 	@ViewChild('productsTable') productsTable!: MatTable<Product>;
-	productDefaults = ProductDefaults; // declared here so that I can use it in the components template
-	displayedColumns = ['select', ...Object.keys(ProductDefaults)];
+	productMetadata = ProductMetadata; // declared here so that I can use it in the components template
+	displayedColumns = ['select', ...Object.keys(ProductMetadata)];
 
 	products = new MatTableDataSource<Product>(PRODUCTS_SAMPLE);
 	selection = new SelectionModel<Product>(true, []);

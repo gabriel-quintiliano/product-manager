@@ -14,13 +14,13 @@
 	</ng-container>
 
 	<!-- other columns template based on properties of object -->
-	<ng-template ngFor let-prodDefKeyValuePair [ngForOf]="(productDefaults | objectEntries)">
+	<ng-template ngFor let-prodDefKeyValuePair [ngForOf]="(productMetadata | objectEntries)">
 		<!-- prodDefKeyValuePair[0] = key -->
 		<!-- prodDefKeyValuePair[1] = value -->
 
 		<ng-container [matColumnDef]="prodDefKeyValuePair[0]">
 			<mat-header-cell *matHeaderCellDef> {{ prodDefKeyValuePair[1].label }} </mat-header-cell>
-			<mat-cell *matCellDef="let product"> {{ product[prodDefKeyValuePair[0]].value }} </mat-cell>
+			<mat-cell *matCellDef="let product"> {{ product[prodDefKeyValuePair[0]] }} </mat-cell>
 		</ng-container>
 
 	</ng-template>
