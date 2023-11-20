@@ -1,19 +1,19 @@
 <div class="d-flex align-items-center my-3">
 	<button mat-raised-button color="accent" (click)="sendBtnPressed(actions.add_product)">
 		<mat-icon>add</mat-icon>
-		add product
+		adicionar produto
 	</button>
 
 	<mat-divider class="mx-3 border-2" [vertical]="true"></mat-divider>
 
 	<p style="margin: 0;"> {{ numberOfSelectedItems }} {{ selectionLabel }}</p>
 
-	<button mat-raised-button class="ms-4 btn__edit" (click)="sendBtnPressed(actions.edit_product)" [disabled]="isEditDisabled()">
+	<button mat-raised-button class="btn__edit" (click)="sendBtnPressed(actions.edit_product)" [disabled]="isEditDisabled()">
 		<mat-icon>edit</mat-icon>
 		editar
 	</button>
 
-	<button mat-raised-button class="ms-4 btn__delete" (click)="sendBtnPressed(actions.delete_product)" [disabled]="isDeleteDisabled()">
+	<button mat-raised-button class="ms-3 btn__delete" (click)="sendBtnPressed(actions.delete_product)" [disabled]="isDeleteDisabled()">
 		<mat-icon>delete</mat-icon>
 		excluir
 	</button>
