@@ -1,1 +1,8 @@
-<pmg-product-table></pmg-product-table>
+<div class="container-xxl">
+	<div class="row mx-xl-3">
+		<div class="col">
+			<pmg-product-table-actions-bar [numberOfSelectedItems]="numberOfSelectedItems" (actionBtnPressed)="runAction($event)"></pmg-product-table-actions-bar>
+			<pmg-product-table #table></pmg-product-table>
+		</div>
+	</div>
+</div>
