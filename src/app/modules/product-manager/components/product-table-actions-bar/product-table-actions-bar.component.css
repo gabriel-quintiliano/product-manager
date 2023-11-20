@@ -1,0 +1,16 @@
+mat-divider {
+	height: 45px;
+}
+
+.btn__edit:not(:disabled) {
+	background-color: rgb(244, 241, 241) !important;
+}
+
+.btn__delete:not(:disabled) {
+	color: whitesmoke !important;
+	background-color: rgb(192, 46, 46) !important;
+}
+
+p {
+	width: 22ch;
+}

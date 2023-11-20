@@ -4,6 +4,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
+import { MatDividerModule } from '@angular/material/divider';
 import { CommonCustomUtilitiesModule } from '../common-custom-utilities/common-custom-utilities.module';
 
 import { ProductComponent } from './components/product/product.component';
@@ -32,6 +33,7 @@ import { ProductManagerComponent } from './components/product-manager/product-ma
 		MatCheckboxModule,
 		MatIconModule,
 		MatButtonModule,
+		MatDividerModule,
 		CommonCustomUtilitiesModule
 	],
 	exports: [
