@@ -2,6 +2,8 @@ import { Component, ViewChild } from '@angular/core';
 import { SelectionModel } from '@angular/cdk/collections';
 import { MatTable, MatTableDataSource } from '@angular/material/table';
 import { Product, ProductMetadata } from '../../models/product.model';
+import { ProductsDbService } from 'src/app/services/products-db.service';
+
 
 @Component({
 	selector: 'pmg-product-table',
@@ -15,9 +17,19 @@ export class ProductTableComponent {
 	productMetadata = ProductMetadata; // declared here so that I can use it in the components template
 	displayedColumns = ['select', ...Object.keys(ProductMetadata)];
 
-	products = new MatTableDataSource<Product>(PRODUCTS_SAMPLE);
+	products = new MatTableDataSource<Product>();
 	selection = new SelectionModel<Product>(true, []);
 	indexesSelected: number[] = []
+
+	constructor(private productsDb: ProductsDbService) { }
+
+	ngAfterViewInit() {
+		this.productsDb.getProducts().subscribe((res) => {
+			console.log("afterViewInit, resposta: ", res);
+			this.products.filteredData.push(...res);
+			this.productsTable.renderRows();
+		})
+	}
 
 	/** Whether the number of selected elements matches the total number of rows. */
 	isAllSelected() {
@@ -55,7 +67,13 @@ export class ProductTableComponent {
 			return;
 		}
 
+		// this will be used by ProductsDb to know which products to delete
+		const selectedProductsSku: string[] = [];
+
 		for (let elem of this.selection.selected) {
+
+			selectedProductsSku.push(elem.sku);
+
 			for (let i = 0; i < this.products.filteredData.length; i++) {
 				if (elem === this.products.filteredData[i]) {
 					this.products.filteredData.splice(i, 1);
@@ -63,8 +81,10 @@ export class ProductTableComponent {
 			}
 		}
 
+		this.productsDb.deleteProducts(...selectedProductsSku);
 		this.selection.clear()
 		this.productsTable.renderRows()
+
 	}
 
 	// for testing
@@ -73,10 +93,59 @@ export class ProductTableComponent {
 	// }
 }
 
-const PRODUCTS_SAMPLE: Product[] = [ // for testing initially
-	new Product('sku-CAR-23-mca', 'Porsche Macan Turbo - 2023', 478000, 130244, 20, 123444, 899990),
-	new Product("SKU-TV-29-3787", "TV 59\" LCD 4K - Smart Connection", 4300, 400, 1000, 1.89, 5700),
-	new Product("SKU-NOTE-29-3787", "NOTE 59\" LCD 4K - Smart Connection", 4300, 400, 1000, 1.89, 5700),
-	new Product("SKU-PSP-29-3787", "PSP 59\" LCD 4K - Smart Connection", 4300, 400, 1000, 1.89, 5700),
-	new Product("SKU-XBOX-29-3787", "XBOX 59\" LCD 4K - Smart Connection", 4300, 400, 1000, 1.89, 5700)
+const PRODUCTS_SAMPLE: Product[] = [
+	{
+		"sku": "sku-car-23-mca",
+		"name": "Porsche Macan Turbo - 2023",
+		"costPrice": 478000,
+		"relatedExpenses": 130244,
+		"markup": 20,
+		"margin": 123444,
+		"sellingPrice": 899990
+	},
+	{
+		"sku": "sku-psp-29-3787",
+		"name": "PSP 59\" LCD 4K - Smart Connection",
+		"costPrice": 4300,
+		"relatedExpenses": 400,
+		"markup": 1000,
+		"margin": 1.89,
+		"sellingPrice": 5700
+	},
+	{
+		"sku": "sku-new-2324-mca",
+		"name": "Pano de chão - 3 por 2",
+		"costPrice": 8,
+		"relatedExpenses": 4,
+		"markup": 20,
+		"margin": 1.6,
+		"sellingPrice": 20
+	},
+	{
+		"sku": "sku-tv-29-3787",
+		"name": "TV 59\" LCD 4K - Smart Connection",
+		"costPrice": 4300,
+		"relatedExpenses": 400,
+		"markup": 1000,
+		"margin": 1.89,
+		"sellingPrice": 5700
+	},
+	{
+		"sku": "sku-note-29-3787",
+		"name": "NOTE 59\" LCD 4K - Smart Connection",
+		"costPrice": 4300,
+		"relatedExpenses": 400,
+		"markup": 1000,
+		"margin": 1.89,
+		"sellingPrice": 5700
+	},
+	{
+		"sku": "sku-xbox-29-3787",
+		"name": "XBOX 59\" LCD 4K - Smart Connection",
+		"costPrice": 4300,
+		"relatedExpenses": 400,
+		"markup": 1000,
+		"margin": 1.89,
+		"sellingPrice": 5700
+	}
 ]
