@@ -22,15 +22,8 @@ export class ProductsDbService {
 		return this.http.put<Product>(`http://localhost:3000/products/${sku}`, updatedContent)
 	}
 
-	// As I want to be able to delete multiple products at once and dont seem to know how to handle an
-	// array of observable in the component, I'll just subscribe to each observable here.
-	deleteProducts(...skus: string[]) {
-
-		for (let sku of skus) {
-			console.log("delete --> ", sku)
-			this.http.delete<Product>(`http://localhost:3000/products/${sku}`).subscribe({ error: this.serverDownHandler })
-		}
-
+	deleteProduct(sku: string): Observable<any> {
+		return this.http.delete(`http://localhost:3000/products/${sku}`);
 	}
 
 
