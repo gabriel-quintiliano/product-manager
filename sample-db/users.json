@@ -1,0 +1,28 @@
+{
+	"users": [
+		{
+			"id": 1,
+			"email": "user@admin.com",
+			"password": "123456",
+			"name": "usuário admin",
+			"role": "admin",
+			"permitedActions": {
+				"add": true,
+				"edit": true,
+				"delete": true
+			}
+		},
+		{
+			"id": 2,
+			"email": "user@emploee.com",
+			"password": "abcdef",
+			"name": "usuário empregado",
+			"role": "employee",
+			"permitedActions": {
+				"add": false,
+				"edit": true,
+				"delete": false
+			}
+		}
+	]
+}
