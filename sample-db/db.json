@@ -63,5 +63,70 @@
 			"margin": 2343,
 			"sellingPrice": 234456
 		}
+	],
+	"backup": [
+		{
+			"sku": "sku-car-23-mca",
+			"name": "Porsche Macan Turbo - 2023",
+			"costPrice": 478000,
+			"relatedExpenses": 130244,
+			"markup": 20,
+			"margin": 123444,
+			"sellingPrice": 899990
+		},
+		{
+			"sku": "sku-psp-29-3787",
+			"name": "PSP 59\" LCD 4K - Smart Connection",
+			"costPrice": 4300,
+			"relatedExpenses": 400,
+			"markup": 1000,
+			"margin": 1.89,
+			"sellingPrice": 5700
+		},
+		{
+			"sku": "sku-new-2324-mca",
+			"name": "Pano de chão - 3 por 2",
+			"costPrice": 8,
+			"relatedExpenses": 4,
+			"markup": 20,
+			"margin": 1.6,
+			"sellingPrice": 20
+		},
+		{
+			"sku": "sku-tv-29-3787",
+			"name": "TV 59\" LCD 4K - Smart Connection",
+			"costPrice": 4300,
+			"relatedExpenses": 400,
+			"markup": 1000,
+			"margin": 1.89,
+			"sellingPrice": 5700
+		},
+		{
+			"sku": "sku-note-29-3787",
+			"name": "NOTE 59\" LCD 4K - Smart Connection",
+			"costPrice": 4300,
+			"relatedExpenses": 400,
+			"markup": 1000,
+			"margin": 1.89,
+			"sellingPrice": 5700
+		},
+		{
+			"sku": "sku-xbox-29-3787",
+			"name": "XBOX 59\" LCD 4K - Smart Connection",
+			"costPrice": 4300,
+			"relatedExpenses": 400,
+			"markup": 1000,
+			"margin": 1.89,
+			"sellingPrice": 5700
+		},
+		{
+			"sku": "sku-novo-elem-22",
+			"name": "apenas um teste",
+			"costPrice": 1222,
+			"relatedExpenses": 22,
+			"markup": 2333,
+			"margin": 2343,
+			"sellingPrice": 234456
+		}
 	]
 }
