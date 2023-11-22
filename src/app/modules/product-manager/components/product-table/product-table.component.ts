@@ -67,21 +67,15 @@ export class ProductTableComponent {
 			return;
 		}
 
-		// this will be used by ProductsDb to know which products to delete
-		const selectedProductsSku: string[] = [];
-
 		for (let elem of this.selection.selected) {
-
-			selectedProductsSku.push(elem.sku);
-
 			for (let i = 0; i < this.products.filteredData.length; i++) {
 				if (elem === this.products.filteredData[i]) {
 					this.products.filteredData.splice(i, 1);
+					this.productsDb.deleteProduct(elem.sku).subscribe();
 				}
 			}
 		}
 
-		this.productsDb.deleteProducts(...selectedProductsSku);
 		this.selection.clear()
 		this.productsTable.renderRows()
 
