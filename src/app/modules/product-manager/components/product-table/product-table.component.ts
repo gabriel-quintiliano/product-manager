@@ -71,7 +71,8 @@ export class ProductTableComponent {
 			for (let i = 0; i < this.products.filteredData.length; i++) {
 				if (elem === this.products.filteredData[i]) {
 					this.products.filteredData.splice(i, 1);
-					this.productsDb.deleteProduct(elem.sku).subscribe();
+					this.productsDb.deleteProduct(elem.sku).subscribe(() => {
+					});
 				}
 			}
 		}
