@@ -13,7 +13,6 @@ import { ProductManagerModule } from './modules/product-manager/product-manager.
 	imports: [
 		BrowserModule,
 		AppRoutingModule,
-		ProductManagerModule,
 		HttpClientModule
 	],
 	providers: [HttpClient],
